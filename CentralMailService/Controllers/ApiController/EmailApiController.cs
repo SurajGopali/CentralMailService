@@ -36,6 +36,7 @@ namespace CentralMailService.Controllers.ApiController
                 BccEmail = request.BccEmail,
                 Subject = request.Subject,
                 Body = request.Body,
+                Signature = request.Signature,
             };
 
             _context.EmailQueue.Add(email);

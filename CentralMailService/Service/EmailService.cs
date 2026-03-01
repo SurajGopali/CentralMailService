@@ -27,7 +27,21 @@ namespace CentralMailService.Services
                 if (!string.IsNullOrEmpty(email.BccEmail))
                     message.Bcc.Add(MailboxAddress.Parse(email.BccEmail));
                 message.Subject = email.Subject;
-                message.Body = new TextPart("html") { Text = email.Body };
+                var finalBody = email.Body;
+
+                if (!string.IsNullOrWhiteSpace(email.Signature))
+                {
+                    finalBody += @"
+                    <br/><br/>
+                    <p style='margin:0;'>Best Regards,</p>
+                " + email.Signature;
+                }
+
+                message.Body = new TextPart("html")
+                {
+                    Text = finalBody
+                };
+
 
                 using var client = new SmtpClient();
                 await client.ConnectAsync(smtp.SmtpHost, smtp.SmtpPort, SecureSocketOptions.StartTls);
