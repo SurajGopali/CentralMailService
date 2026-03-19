@@ -8,8 +8,10 @@
         public string? CcEmail { get; set; }     
         public string? BccEmail { get; set; }       
         public string Subject { get; set; }       
-        public string Body { get; set; }
         public string? Signature { get; set; }
+        public string? Body { get; set; }
+        public string? AttachmentName { get; set; }
+        public string? AttachmentPath { get; set; }
         public int Status { get; set; } = 0;       
         public int RetryCount { get; set; } = 0;
         public DateTime? LastAttemptDate { get; set; }

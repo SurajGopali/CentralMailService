@@ -8,6 +8,6 @@
         public string Subject { get; set; }
         public string Body { get; set; }
         public string? Signature { get; set; }
-
+        public IFormFile? Attachment { get; set; }
     }
 }
